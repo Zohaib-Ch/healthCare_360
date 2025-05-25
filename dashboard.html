@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard - HealthCare360</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="assets/css/dashboard.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+    <div class="dashboard-container">
+        <!-- Sidebar -->
+        <div class="sidebar">
+            <div class="sidebar-logo">HealthCare360</div>
+            <ul class="sidebar-menu">
+                <li>
+                    <a href="dashboard.html" class="active">
+                        <i class="fas fa-home"></i> Dashboard
+                    </a>
+                </li>
+                <li>
+                    <a href="add-health-data.html">
+                        <i class="fas fa-plus-circle"></i> Add Health Data
+                    </a>
+                </li>
+                <li>
+                    <a href="reports.html">
+                        <i class="fas fa-file-medical-alt"></i> Reports
+                    </a>
+                </li>
+                <li>
+                    <a href="chatbot.html">
+                        <i class="fas fa-robot"></i> Health Chatbot
+                    </a>
+                </li>
+                <li>
+                    <a href="medication.html">
+                        <i class="fas fa-pills"></i> Medication
+                    </a>
+                </li>
+                <li>
+                    <a href="analytics.html">
+                        <i class="fas fa-chart-line"></i> Analytics
+                    </a>
+                </li>
+                <li>
+                    <a href="profile.html">
+                        <i class="fas fa-user-circle"></i> Profile
+                    </a>
+                </li>
+                <li>
+                    <a href="#" id="logout">
+                        <i class="fas fa-sign-out-alt"></i> Logout
+                    </a>
+                </li>
+            </ul>
+        </div>
+
+        <!-- Main Content -->
+        <div class="main-content">
+            <!-- Top Bar -->
+            <div class="top-bar">
+                <button class="menu-toggle" id="menu-toggle">
+                    <i class="fas fa-bars"></i>
+                </button>
+                <div class="user-info">
+                    <span>Welcome, <span id="username">User</span></span>
+                    <div class="user-dropdown">
+                        <div class="user-avatar">
+                            <i class="fas fa-user"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Dashboard Content -->
+            <div class="dashboard-content">
+                <h2 class="section-title">Health Overview</h2>
+                
+                <!-- Vital Signs Cards -->
+                <div class="vital-signs">
+                    <div class="vital-card">
+                        <div class="vital-card-title">Heart Rate</div>
+                        <div class="vital-card-value" id="heart-rate-value">75</div>
+                        <div class="vital-card-unit">BPM</div>
+                    </div>
+                    
+                    <div class="vital-card">
+                        <div class="vital-card-title">Blood Pressure</div>
+                        <div class="vital-card-value" id="blood-pressure-value">120/80</div>
+                        <div class="vital-card-unit">mmHg</div>
+                    </div>
+                    
+                    <div class="vital-card">
+                        <div class="vital-card-title">Oxygen Level</div>
+                        <div class="vital-card-value" id="oxygen-level-value">98</div>
+                        <div class="vital-card-unit">%</div>
+                    </div>
+                    
+                    <div class="vital-card">
+                        <div class="vital-card-title">Temperature</div>
+                        <div class="vital-card-value" id="temperature-value">36.8</div>
+                        <div class="vital-card-unit">°C</div>
+                    </div>
+                </div>
+                
+                <!-- Health Graphs -->
+                <div class="health-graphs">
+                    <h2 class="section-title">Health Trends</h2>
+                    
+                    <div class="graph-filters">
+                        <div class="filter-option" id="filter-today">Today</div>
+                        <div class="filter-option active" id="filter-week">Last 7 Days</div>
+                        <div class="filter-option" id="filter-custom">Custom Range</div>
+                    </div>
+                    
+                    <div class="graphs-grid">
+                        <div class="graph-card">
+                            <div class="graph-title">Heart Rate</div>
+                            <div class="chart-container">
+                                <canvas id="heart-rate-chart"></canvas>
+                            </div>
+                        </div>
+                        
+                        <div class="graph-card">
+                            <div class="graph-title">Blood Pressure</div>
+                            <div class="chart-container">
+                                <canvas id="blood-pressure-chart"></canvas>
+                            </div>
+                        </div>
+                        
+                        <div class="graph-card">
+                            <div class="graph-title">Oxygen Level</div>
+                            <div class="chart-container">
+                                <canvas id="oxygen-level-chart"></canvas>
+                            </div>
+                        </div>
+                        
+                        <div class="graph-card">
+                            <div class="graph-title">Temperature</div>
+                            <div class="chart-container">
+                                <canvas id="temperature-chart"></canvas>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="assets/js/dashboard.js"></script>
+</body>
+</html>

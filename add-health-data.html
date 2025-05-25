@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add Health Data - HealthCare360</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="assets/css/add-health-data.css">
+</head>
+<body>
+    <div class="dashboard-container">
+        <!-- Sidebar -->
+        <div class="sidebar">
+            <div class="sidebar-logo">HealthCare360</div>
+            <ul class="sidebar-menu">
+                <li>
+                    <a href="dashboard.html">
+                        <i class="fas fa-home"></i> Dashboard
+                    </a>
+                </li>
+                <li>
+                    <a href="add-health-data.html" class="active">
+                        <i class="fas fa-plus-circle"></i> Add Health Data
+                    </a>
+                </li>
+                <li>
+                    <a href="reports.html">
+                        <i class="fas fa-file-medical-alt"></i> Reports
+                    </a>
+                </li>
+                <li>
+                    <a href="chatbot.html">
+                        <i class="fas fa-robot"></i> Health Chatbot
+                    </a>
+                </li>
+                <li>
+                    <a href="medication.html">
+                        <i class="fas fa-pills"></i> Medication
+                    </a>
+                </li>
+                <li>
+                    <a href="analytics.html">
+                        <i class="fas fa-chart-line"></i> Analytics
+                    </a>
+                </li>
+                <li>
+                    <a href="profile.html">
+                        <i class="fas fa-user-circle"></i> Profile
+                    </a>
+                </li>
+                <li>
+                    <a href="#" id="logout">
+                        <i class="fas fa-sign-out-alt"></i> Logout
+                    </a>
+                </li>
+            </ul>
+        </div>
+
+        <!-- Main Content -->
+        <div class="main-content">
+            <!-- Top Bar -->
+            <div class="top-bar">
+                <button class="menu-toggle" id="menu-toggle">
+                    <i class="fas fa-bars"></i>
+                </button>
+                <div class="user-info">
+                    <span>Welcome, <span id="username">User</span></span>
+                    <div class="user-avatar">
+                        <i class="fas fa-user"></i>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Add Health Data Content -->
+            <div class="health-data-content">
+                <h2 class="section-title">Add Health Data</h2>
+                
+                <!-- Add Health Data Form -->
+                <div class="data-form-card">
+                    <h3 class="card-title"><i class="fas fa-heartbeat"></i> Enter Your Health Metrics</h3>
+                    
+                    <form id="health-data-form" class="health-data-form">
+                        <div class="form-group">
+                            <label for="data-date">Date</label>
+                            <input type="date" id="data-date" required>
+                            <div class="error-message" id="date-error"></div>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="heart-rate">Heart Rate (BPM)</label>
+                            <input type="number" id="heart-rate" min="40" max="200" placeholder="60-100 BPM" required>
+                            <div class="error-message" id="heart-rate-error"></div>
+                        </div>
+                        
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="bp-systolic">Blood Pressure - Systolic</label>
+                                <input type="number" id="bp-systolic" min="70" max="200" placeholder="mmHg" required>
+                                <div class="error-message" id="bp-systolic-error"></div>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="bp-diastolic">Blood Pressure - Diastolic</label>
+                                <input type="number" id="bp-diastolic" min="40" max="130" placeholder="mmHg" required>
+                                <div class="error-message" id="bp-diastolic-error"></div>
+                            </div>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="oxygen-level">Oxygen Level (%)</label>
+                            <input type="number" id="oxygen-level" min="80" max="100" step="1" placeholder="94-100%" required>
+                            <div class="error-message" id="oxygen-level-error"></div>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="temperature">Body Temperature (°C)</label>
+                            <input type="number" id="temperature" min="35" max="42" step="0.1" placeholder="36.5-37.5°C" required>
+                            <div class="error-message" id="temperature-error"></div>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="notes">Additional Notes</label>
+                            <textarea id="notes" rows="3" placeholder="Add any additional notes about your health status..."></textarea>
+                        </div>
+                        
+                        <div class="success-message" id="form-success"></div>
+                        
+                        <button type="submit" class="save-data-btn">
+                            <i class="fas fa-save"></i> Save Health Data
+                        </button>
+                    </form>
+                </div>
+                
+                <!-- Recent Entries -->
+                <div class="recent-entries-card">
+                    <h3 class="card-title"><i class="fas fa-history"></i> Recent Entries</h3>
+                    
+                    <div class="entries-table-container">
+                        <table class="entries-table">
+                            <thead>
+                                <tr>
+                                    <th>Date</th>
+                                    <th>Heart Rate</th>
+                                    <th>Blood Pressure</th>
+                                    <th>Oxygen Level</th>
+                                    <th>Temperature</th>
+                                    <th>Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody id="entries-table-body">
+                                <!-- Entries will be added here dynamically -->
+                            </tbody>
+                        </table>
+                        
+                        <div class="no-entries" id="no-entries">
+                            <p>No health data entries yet. Add your first entry using the form.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Delete Confirmation Modal -->
+    <div class="modal" id="delete-modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 class="modal-title">Delete Entry</h3>
+                <button class="close-modal" id="close-delete-modal">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            
+            <div class="modal-body">
+                <p>Are you sure you want to delete this health data entry? This action cannot be undone.</p>
+            </div>
+            
+            <div class="modal-footer">
+                <button class="modal-btn cancel-btn" id="cancel-delete-btn">Cancel</button>
+                <button class="modal-btn confirm-btn" id="confirm-delete-btn">Delete Entry</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="assets/js/add-health-data.js"></script>
+</body>
+</html>
